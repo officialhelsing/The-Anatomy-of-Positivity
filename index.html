@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,17 +20,8 @@
             50% { opacity: 0.8; }
             100% { transform: translateY(-100px) translateX(30px) scale(1.5); opacity: 0; }
         }
-        @keyframes organic-sway {
-            0% { transform: rotate(-4deg) scale(0.95); }
-            100% { transform: rotate(4deg) scale(1.05); }
-        }
         .flower-sprout {
-            transition-property: transform, opacity, filter;
-            will-change: transform, opacity, filter;
-            transform-style: preserve-3d;
-        }
-        .flower-sprout.is-active svg {
-            animation: organic-sway 2.5s ease-in-out infinite alternate;
+            transition-property: all;
         }
     </style>
 </head>
@@ -2229,86 +2220,15 @@ const MOSAIC_BLOCK_2 = `All of humanity's problems stem from man's inability to 
             </svg>
         `;
 
-        const getPinkLotus = (size) => `
-            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C13.5 5 17 5 19 3C18 7 21 9 23 11C19 12 19 15 21 18C17 17 14 20 12 23C10 20 7 17 3 18C5 15 5 12 1 11C3 9 6 7 5 3C7 5 10.5 5 12 2Z" fill="#ff4d85" opacity="0.9"/>
-                <path d="M12 6C13 8 15 8 16 7C15.5 9.5 17 11 18 12C15.5 12.5 15.5 14 16 15.5C14 15 12 17 12 19C12 17 10 15 8 15.5C8.5 14 8.5 12.5 6 12C7 11 8.5 9.5 8 7C9 8 11 8 12 6Z" fill="#ffa6c9"/>
-                <circle cx="12" cy="12" r="2.5" fill="#ffd700"/>
-            </svg>
-        `;
-
-        const getGoldDaisy = (size) => `
-            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="#ffb703" opacity="0.9"/>
-                <path d="M12 5L13.5 10.5L19 12L13.5 13.5L12 19L10.5 13.5L5 12L10.5 10.5L12 5Z" fill="#ffea00"/>
-                <circle cx="12" cy="12" r="3" fill="#fb8500"/>
-            </svg>
-        `;
-
-        const getBlueMorningGlory = (size) => `
-            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none">
-                <path d="M12 22C12 22 2 15 2 7C2 4.2 4.2 2 7 2C9.3 2 11.2 3.6 12 6C12.8 3.6 14.7 2 17 2C19.8 2 22 4.2 22 7C22 15 12 22 12 22Z" fill="#4ea8de" opacity="0.85"/>
-                <path d="M12 22C12 22 6 16 6 9C6 6.5 7.5 4.5 9.5 4.5C11 4.5 12 5.5 12 7C12 5.5 13 4.5 14.5 4.5C16.5 4.5 18 6.5 18 9C18 16 12 22 12 22Z" fill="#7400b8" opacity="0.6"/>
-                <circle cx="12" cy="7" r="1.5" fill="#ffe169"/>
-            </svg>
-        `;
-
-        const getTinyButterfly = (size) => `
-            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none">
-                <path d="M12 12C9 6 3 8 5 13C6 15 10 14 12 12Z" fill="#ffb4a2" opacity="0.9"/>
-                <path d="M12 12C15 6 21 8 19 13C18 15 14 14 12 12Z" fill="#e5989b" opacity="0.9"/>
-                <path d="M12 12C10 16 5 18 6 14C7 12 10 11 12 12Z" fill="#ffcbf2" opacity="0.8"/>
-                <path d="M12 12C14 16 19 18 18 14C17 12 14 11 12 12Z" fill="#ffcbf2" opacity="0.8"/>
-                <path d="M12 8V16" stroke="#b5838d" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M12 8C11 6 10 5 9 6" stroke="#b5838d" stroke-width="1" stroke-linecap="round"/>
-                <path d="M12 8C13 6 14 5 15 6" stroke="#b5838d" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-        `;
-
-        const getTinyBee = (size) => `
-            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none">
-                <ellipse cx="12" cy="14" rx="5" ry="3" fill="#ffb703" transform="rotate(-15 12 14)"/>
-                <path d="M10 11.5V16.5M14 11.5V16.5" stroke="#023047" stroke-width="1.5" transform="rotate(-15 12 14)"/>
-                <path d="M15 13C17 9 21 10 19 14C18 16 16 14 15 13Z" fill="#a8dadc" opacity="0.8"/>
-                <path d="M13 11C15 7 19 8 17 12C16 14 14 12 13 11Z" fill="#a8dadc" opacity="0.6"/>
-                <circle cx="8" cy="14" r="1.5" fill="#023047" transform="rotate(-15 12 14)"/>
-            </svg>
-        `;
-
-        const getTinyLadybug = (size) => `
-            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="6" fill="#e63946"/>
-                <path d="M12 6V18" stroke="#1d3557" stroke-width="1.5"/>
-                <circle cx="12" cy="6" r="2" fill="#1d3557"/>
-                <circle cx="10" cy="10" r="1" fill="#1d3557"/>
-                <circle cx="14" cy="14" r="1" fill="#1d3557"/>
-                <circle cx="10" cy="15" r="1" fill="#1d3557"/>
-                <circle cx="14" cy="10" r="1" fill="#1d3557"/>
-            </svg>
-        `;
-
         const FLOWER_TYPES = [
-            // Lush greenery
-            { generator: getTinySapling, origin: 'bottom center', inactiveRot: -20, duration: '600ms', ease: 'cubic-bezier(0.34, 1.8, 0.64, 1)' },
-            { generator: getFernFrond, origin: 'bottom center', inactiveRot: 30, duration: '750ms', ease: 'cubic-bezier(0.34, 1.6, 0.64, 1)' },
-            { generator: getCreepingIvy, origin: 'left center', inactiveRot: -45, duration: '850ms', ease: 'cubic-bezier(0.34, 1.5, 0.64, 1)' },
-            { generator: getTinyBuds, origin: 'center center', inactiveRot: 60, duration: '550ms', ease: 'cubic-bezier(0.34, 1.9, 0.64, 1)' },
-            { generator: getLushVine, origin: 'left center', inactiveRot: 20, duration: '750ms', ease: 'cubic-bezier(0.34, 1.7, 0.64, 1)' },
-            { generator: getDelicateSprig, origin: 'bottom center', inactiveRot: -20, duration: '600ms', ease: 'cubic-bezier(0.34, 1.8, 0.64, 1)' },
-            
-            // Vibrant colors
-            { generator: getPinkLotus, origin: 'center center', inactiveRot: 60, duration: '650ms', ease: 'cubic-bezier(0.34, 1.9, 0.64, 1)' },
-            { generator: getGoldDaisy, origin: 'center center', inactiveRot: -45, duration: '700ms', ease: 'cubic-bezier(0.34, 1.8, 0.64, 1)' },
-            { generator: getBlueMorningGlory, origin: 'bottom center', inactiveRot: 30, duration: '600ms', ease: 'cubic-bezier(0.34, 1.9, 0.64, 1)' },
-            
-            // Tiny critters!
-            { generator: getTinyButterfly, origin: 'center center', inactiveRot: 45, duration: '800ms', ease: 'cubic-bezier(0.34, 1.5, 0.64, 1)' },
-            { generator: getTinyBee, origin: 'center center', inactiveRot: -30, duration: '700ms', ease: 'cubic-bezier(0.34, 1.6, 0.64, 1)' },
-            { generator: getTinyLadybug, origin: 'center center', inactiveRot: 15, duration: '550ms', ease: 'cubic-bezier(0.34, 1.8, 0.64, 1)' }
+            { generator: getTinySapling, origin: 'bottom center', inactiveRot: -20, duration: '700ms', ease: 'cubic-bezier(0.34,1.56,0.64,1)' },
+            { generator: getFernFrond, origin: 'bottom center', inactiveRot: 30, duration: '800ms', ease: 'ease-out' },
+            { generator: getCreepingIvy, origin: 'left center', inactiveRot: -45, duration: '900ms', ease: 'cubic-bezier(0.34,1.56,0.64,1)' },
+            { generator: getTinyBuds, origin: 'center center', inactiveRot: 60, duration: '600ms', ease: 'ease-out' },
+            { generator: getLushVine, origin: 'left center', inactiveRot: 20, duration: '800ms', ease: 'ease-out' },
+            { generator: getDelicateSprig, origin: 'bottom center', inactiveRot: -20, duration: '650ms', ease: 'ease-out' }
         ];
 
-        // ==========================================
-        // DYNAMIC SPROUTING LOGIC
         // ==========================================
         // DYNAMIC SPROUTING LOGIC
         // ==========================================
@@ -2330,12 +2250,12 @@ const MOSAIC_BLOCK_2 = `All of humanity's problems stem from man's inability to 
 
                 const delay = Math.floor(Math.random() * 450);
                 const rotation = Math.floor(Math.random() * 360);
-                const size = 10 + Math.floor(Math.random() * 16);
+                const size = 10 + Math.floor(Math.random() * 12);
                 const mirrored = Math.random() > 0.5 ? 'scaleX(-1)' : '';
                 const mirroredY = Math.random() > 0.5 && flowerDef.generator === getLushVine ? 'scaleY(-1)' : '';
 
                 const el = document.createElement('div');
-                el.className = 'flower-sprout absolute pointer-events-none z-30 opacity-0';
+                el.className = 'flower-sprout absolute pointer-events-none z-30 drop-shadow-sm opacity-0';
                 
                 el.style[yProp] = finalYVal;
                 el.style[xProp] = xVal;
@@ -2345,7 +2265,7 @@ const MOSAIC_BLOCK_2 = `All of humanity's problems stem from man's inability to 
                 el.style.transitionTimingFunction = flowerDef.ease;
                 
                 const activeTransform = `scale(1) rotate(${rotation}deg) ${mirrored} ${mirroredY}`;
-                const inactiveTransform = `scale(0.05) rotate(${rotation + flowerDef.inactiveRot}deg) ${mirrored} ${mirroredY}`;
+                const inactiveTransform = `scale(0.3) rotate(${rotation + flowerDef.inactiveRot}deg) ${mirrored} ${mirroredY}`;
                 
                 el.dataset.activeTransform = activeTransform;
                 el.dataset.inactiveTransform = inactiveTransform;
@@ -2360,8 +2280,6 @@ const MOSAIC_BLOCK_2 = `All of humanity's problems stem from man's inability to 
                 sprouts.forEach(s => {
                     s.style.opacity = '1';
                     s.style.transform = s.dataset.activeTransform;
-                    s.style.filter = 'drop-shadow(0 4px 12px rgba(82, 183, 136, 0.6))';
-                    s.classList.add('is-active');
                 });
             });
 
@@ -2370,8 +2288,6 @@ const MOSAIC_BLOCK_2 = `All of humanity's problems stem from man's inability to 
                 sprouts.forEach(s => {
                     s.style.opacity = '0';
                     s.style.transform = s.dataset.inactiveTransform;
-                    s.style.filter = 'drop-shadow(0 0px 0px rgba(82, 183, 136, 0))';
-                    s.classList.remove('is-active');
                 });
             });
         }
